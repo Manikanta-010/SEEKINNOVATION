@@ -1,0 +1,252 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboardnavbar {
+  background-color: #00274d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 65px;
+
+}
+
+.dashbarlogo img{
+  font-size: 1.5rem;
+  width:90px;
+  height: 120px;
+}
+
+.navButtons button {
+  margin-left: 15px;
+  padding: 8px 12px;
+  background-color: gold;
+  color: #00274d;
+  border: none;
+  font-size: 18px;
+  font-weight:500;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sidebar {
+  background-color: #001f3f;
+  width: 220px;
+  transition: width 0.3s;
+}
+
+.sidebar.closed {
+  width: 50px;
+}
+
+.menuToggle {
+  background: none;
+  color: white;
+  border: none;
+  padding: 25px;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+.menuItems button {
+  display: flex;
+  align-items: center;
+  padding: 35px;
+  background: none;
+  color: white;
+  font-size: large;
+  border: none;
+  text-align: left;
+  width: 100%;
+  font-weight:400;
+  text-decoration: underline;
+  text-decoration-color:#001f3f;
+  cursor: pointer;
+}
+.menuItems button:hover{
+  font-size: 17px;
+}
+ 
+.cameraIcon {
+  font-size: 24px;
+  color: gold;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 40px 60px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  margin-bottom: 20px;
+  width: 100%;
+}
+/* New flex container for profile and logo */
+.profileAndLogo {
+display: flex;
+align-items: center;
+width: 100%;  /* Occupy full width */
+}
+ 
+.profilePic {
+  width: 165px; /* Fixed width */
+  height: 165px; /* Fixed height */
+  border-radius: 50%; /* Keep the circular shape */
+  border: 2px dashed #ccc; /* Dashed border for the reserved area */
+  background-color: #f9f9f9; /* Light background color */
+  display: flex;
+  margin-right: 30px;
+  justify-content: center; /* Center the image vertically */
+  align-items: center; /* Center the image horizontally */
+  overflow: hidden; /* Hide overflow */
+  position: relative; /* Position relative for proper image placement */
+}
+
+.profilePic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profilePic .editIcon {
+  position: absolute; /* Positioning for the pencil icon */
+  bottom: 10px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  color: #00274d; /* Icon color */
+  cursor: pointer; /* Change cursor on hover */
+  background-color: rgba(255, 255, 255, 0.7); /* Light background for visibility */
+  border-radius: 50%; /* Round background */
+  padding: 5px; /* Padding for better click area */
+}
+.profilePic input {
+  display: none; /* Hide the file input */
+}
+ 
+.uploadButton {
+  position: absolute; /* Positioning the button */
+  bottom: 55px; /* Position above the bottom */
+  left: 50%; /* Center the button */
+  transform: translateX(-50%); /* Center the button */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background for visibility */
+  color: #00274d; /* Button text color */
+  border: none; /* Remove border */
+  padding: 5px 10px; /* Padding for button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 0.8rem; /* Font size */
+  
+}
+
+.saveButton {
+  position: absolute; /* Positioning the save button */
+  bottom: 10px; /* Adjust position */
+  right: 50px; /* Align to the right */
+  background-color: rgba(255, 255, 255, 0.8); /* Light background for visibility */
+  color: #00274d; /* Button text color */
+  border: none; /* Remove border */
+  padding: 5px 10px; /* Padding for button */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 0.8rem; /* Font size */
+   
+}
+
+.companyLogo {
+  width: 1000px; 
+  height: 90px; /* Set a height to define the reserved area */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the placeholder text */
+  border: 2px dashed #ccc; /* Dashed border for the reserved area */
+  background-color: #f9f9f9; /* Light background color */
+  color: #aaa; /* Color for the placeholder text */
+  font-style: italic; /* Italicize the text */
+  position: relative;
+
+}
+
+.companyLogo img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+}
+
+/* Additional style for placeholder text */
+.companyLogo.placeholder {
+   text-align: center;
+}
+
+.detailsSection {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.detailsSection1, .detailsSection2 {
+  flex: 1; /* Each section takes equal space */
+  margin: 0 -400px; /* Add some spacing between columns */
+}
+
+
+.aboutSection {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.aboutSection button{
+  background-color: #FFD700;
+  border-radius: 5px;
+  color: #00274d;
+}
+.aboutSection button:hover{
+  background-color: #debf0d;
+}
+.offersNeeds {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.offersNeeds .column {
+  background-color: white;
+  padding: 15px;
+  width: 45%;
+}
+
+.otherSettings {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.otherSettings button {
+  padding: 10px 20px;
+  background-color: gold;
+  color: #00274d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.otherSettings button:hover{
+  background-color:#debf0d ;
+}

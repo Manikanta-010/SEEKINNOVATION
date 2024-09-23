@@ -1,0 +1,85 @@
+.registration-step3-register-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .registration-step3-left-section {
+    flex: 3;
+    background-color: #f5f5f5;
+  }
+  
+  .registration-step3-register-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .registration-step3-right-section {
+    flex: 1.4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  .registration-step3-logo-section {
+    margin-top: 0px;
+  }
+  
+  .registration-step3-logo {
+    width: 80px;
+    height: 90px;
+  }
+  
+  .registration-step3-form-section {
+    margin-top: 135px;
+    margin-bottom: 200px;
+    width: 100%;
+    max-width: 400px;
+  }
+  .registration-step3-form-section h2{
+    color:#364581;
+  }
+  .registration-step3-form-group {
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    display: flex;
+    align-items: center;
+  }
+  
+  .registration-step3-back-btn,
+  .registration-step3-next-btn {
+    width: 48%;
+    margin-right: 2%;
+  }
+  
+  .registration-step3-next-btn {
+    background-color: #364581;
+    color: white;
+    padding: 10px 20px;
+    max-width: 200px; /* Adjust max-width as needed */
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .registration-step3-back-btn {
+    background-color: #ddd;
+  }
+  
+  .registration-step3-already-registered {
+    margin-top: 10px;
+    font-size: larger;
+    text-align: center;
+  }
+  
+  .registration-step3-already-registered a {
+    color: #364581;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .registration-step3-already-registered a:hover {
+    text-decoration: underline;
+    color: #593ac0;
+  }
+  
