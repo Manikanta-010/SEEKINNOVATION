@@ -1,6 +1,6 @@
 
 .Dashboard9{
-/* General layout for the entire dashboard */
+ 
 .dashboard-main {
   display: flex;
   justify-content: space-between;
@@ -48,8 +48,8 @@
    margin-top: 45px;
 }
 .profile-picture{
-  width: 125px;
-  height: 140px;
+  width: 135px;
+  height: 145px;
   border-radius: 50%;
   object-fit: cover;
 }

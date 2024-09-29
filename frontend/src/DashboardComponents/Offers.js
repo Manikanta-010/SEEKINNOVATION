@@ -7,8 +7,21 @@ const Offers = () => {
   const navigate = useNavigate();
 
   const handleSave = () => {
-    navigate('/dashboard', { state: { offers: offersSelections } });
+    const groupedOffers = offersOptions.reduce((acc, offer) => {
+      const selectedSubcategories = offer.subcategories.filter(sub => offersSelections.includes(sub));
+      if (selectedSubcategories.length > 0) {
+        acc.push({
+          sector: "ENERGY", // Future sectors can be added here
+          category: offer.name,
+          subcategories: selectedSubcategories
+        });
+      }
+      return acc;
+    }, []);
+  
+    navigate('/supplier-dashboard', { state: { offers: groupedOffers } });
   };
+  
 
   const offersOptions = [
     {
@@ -196,9 +209,9 @@ const Offers = () => {
 
   return (
     <div className={styles.offersNeeds}>
-      <h3>Energy Sector</h3>
+      <h3>ENERGY SECTOR </h3>
       <div className={styles.buttonsTop}>
-        <button onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
+        <button onClick={() => navigate('/supplier-dashboard')}>Back to Dashboard</button>
         <button onClick={handleSave}>Save</button>
       </div>
 

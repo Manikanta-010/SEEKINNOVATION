@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './GeneralSelection.module.css';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate} from 'react-router-dom';
+ 
 
 const GeneralSelection = ({ onSave }) => {
   const [selectedGeneral, setSelectedGeneral] = useState([]);
@@ -10,6 +10,7 @@ const GeneralSelection = ({ onSave }) => {
 
   const location = useLocation();
   const { sectors } = location.state || {};
+
 
   const generalOptions = [
     "Patents / Technologies", "Consulting", "Design", "Engineering", "Partnership", "Prototyping"
@@ -22,10 +23,16 @@ const GeneralSelection = ({ onSave }) => {
   };
 
   const navigate = useNavigate();
-  
+  const { state} = useLocation();
+
   const handleSave = () => {
-   
-    navigate('/needs', { state: { sectors: selectedSectors } });
+    if (state.role === 'Contractor/Buyer') {
+      navigate('/needs', { state: { sectors: selectedSectors, general: selectedGeneral } });
+    }
+    else {
+      navigate('/offers', { state: { sectors: selectedSectors, general: selectedGeneral } });
+    }
+     
   };
 
   const handleClose = () => {

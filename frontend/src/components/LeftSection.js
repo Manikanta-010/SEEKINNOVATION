@@ -1,12 +1,14 @@
 import React from 'react';
 import './styles/LeftSection.css';
 
-const LeftSection = ({ imageSrc }) => {
-  return (
-    
+const LeftSection = ({ videoSrc }) => {
+  return ( 
     <div className="left-section">
-      <img src={imageSrc} alt="Left Section" className="left-section-image" />
-    </div>
+    <video className="left-section-video" controls>
+      <source src={videoSrc} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
   );
 };
 

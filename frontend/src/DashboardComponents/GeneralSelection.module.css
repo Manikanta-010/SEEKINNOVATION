@@ -20,7 +20,7 @@
   align-items: center;
   padding: 20px;
   border-radius: 10px;
-  position: relative; /* For positioning the close button */
+  position: relative;  
 }
 
 h2 {
@@ -40,13 +40,11 @@ h2 {
 .general-item label{
   color: white;
   flex-grow: 1;
-  
 }
 
 .general-item input {
   margin-right: 10px;
   width: 20px;
-  
 }
 
 .general-saveBtn {

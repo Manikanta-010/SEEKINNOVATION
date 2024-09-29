@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import styles from './SectorPopup.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const SectorPopup = ({ closePopup }) => {
+
+  const { state} = useLocation();
+
   const [selectedSectors, setSelectedSectors] = useState([]);
+  
+
 
   const handleSelect = (sector) => {
     if (selectedSectors.includes(sector)) {
@@ -13,12 +18,9 @@ const SectorPopup = ({ closePopup }) => {
     }
   };
   const navigate = useNavigate();
-
- 
- 
   const handleSave = () => {
    
-    navigate('/general-selection', { state: { sectors: selectedSectors } });
+    navigate('/general-selection', { state: { sectors: selectedSectors,role: state.role} });
     closePopup();
   };
 

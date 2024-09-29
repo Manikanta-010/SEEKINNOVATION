@@ -104,31 +104,7 @@ h4 {
   background-color: #baa52f;
 }
  
-
-.buttonsSection {
-  margin-top: 10px;
-  display: flex;
-  
-  justify-content: space-between;
-  align-items: center; /* Center align the buttons vertically */
-}
-
-.buttonsSection button {
-  padding: 5px 10px;
-  background: none; /* No background color */
-  color:#FFD700; /* Link color */
-  border: none;
-  text-decoration: none; /* Underline the text */
-  cursor: pointer;
-  font-size: 19px; /* Smaller font size */
-}
-
-.buttonsSection button:hover {
-  color:#baa52f;
-  text-decoration: underline; 
-  font-weight: bold;/* Change color on hover */
-}
-
+ 
 
 .needsLinks {
   margin-bottom: 35px;
@@ -149,10 +125,51 @@ h4 {
   font-weight: bolder;
 }
 
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between the boxes */
+}
+
 .section {
+  flex: 1 1 calc(50% - 20px); /* 2 boxes per row with gap */
   margin-top: 20px;
   padding: 10px;
   border: 2.5px solid #abc622;
   border-radius: 8px;
-  background-color:#364581;
+  background-color: #364581;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This pushes buttons to the bottom */
+  box-sizing: border-box;
 }
+
+.section:hover {
+  background-color: #364584; /* Darker shade on hover */
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
+
+.buttonsSection {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Remove margin-top or padding to push buttons to bottom */
+}
+
+.buttonsSection button {
+  padding: 5px 10px;
+  background: none; /* No background color */
+  color: #FFD700; /* Link color */
+  border: none;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.buttonsSection button:hover {
+  color: #baa52f;
+  text-decoration: underline;
+  font-weight: bold;
+}
+

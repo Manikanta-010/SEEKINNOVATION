@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import styles from './Dashboard.module.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faHome, faCog, faComments, faUser, faCamera, faPencilAlt, faSave } from '@fortawesome/free-solid-svg-icons';
 import SectorPopup from './SectorPopup';
+import SectorAndApplication from './SectorAndApplication';
 
-const Dashboard = () => {
+import ActivityForm from './ActivityForm';
+import ProductsAndAssets from './ProductsAndAssets';
+
+const SupplierDashboard = () => {
   const location = useLocation();
   const navigate= useNavigate();   
 
   const [offers, setOffers] = useState([]);
-  const [needs, setNeeds] = useState([]);
- 
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isPopupVisible, setIsPopupVisible] = useState(true);
@@ -35,6 +38,13 @@ const Dashboard = () => {
   const [company, setCompany] = useState('');
   const [country, setCountry] = useState('');
 
+
+  const [showMaterials, setShowMaterials] = useState(false);
+  const [showQuantity, setShowQuantity] = useState(false);
+  const [showTiming, setShowTiming] = useState(false);
+  const [othersChecked, setOthersChecked] = useState(false);  
+  const [othersText, setOthersText] = useState(''); 
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -53,10 +63,7 @@ const Dashboard = () => {
     
     }
 
-    if (location.state && location.state.needs ) {
-      setNeeds(location.state.needs);
-   
-   }
+  
 
    if (location.state) {
     setFullName(location.state.fullName || '');
@@ -91,6 +98,16 @@ const Dashboard = () => {
 
   const handleSaveDetails = () => setIsEditingDetails(false);
   const handleSaveAbout = () => setIsEditingAbout(false);
+
+  const [productFiles, setProductFiles] = useState([]);
+  const handleFileUpload = (event) => {
+    const files = Array.from(event.target.files);
+    setProductFiles((prevFiles) => [...prevFiles, ...files]);
+  };
+  
+  const handleRemoveFile = (index) => {
+    setProductFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+  };
 
   return (
     <div className={styles.dashboard}>
@@ -173,7 +190,7 @@ const Dashboard = () => {
                   ) : (
                     <>
                       <img src={companyLogo} alt="Company Logo" className={styles.logoImg} />
-                      <div className={styles.placeholder}>Upload your Company Logo here..</div>
+                      <div className={styles.placeholder}>  </div>
                       <FontAwesomeIcon icon={faPencilAlt} onClick={() => setIsEditingCompanyLogo(true)} className={styles.editIcon} />
                     </>
                   )}
@@ -197,7 +214,7 @@ const Dashboard = () => {
             </div>
           
 
-           
+            <div className={styles.aboutAndActivityContainer}>
           <div className={styles.aboutSection}>
             {isEditingAbout ? (
               <textarea
@@ -215,32 +232,120 @@ const Dashboard = () => {
               <button onClick={() => setIsEditingAbout(true)}>Edit</button>
             )}
           </div>
-
-          <div className={styles.offersNeeds}>
-            <div className={styles.column}>
-              <h3>Your Offers</h3>
-              <ul>
-                {offers.map((offer, index) => (
-                  <li key={index}>{offer}</li>
-                ))}
-              </ul>
-            </div>
-            <div className={styles.column}>
-              <h3>Add your needs</h3>
-              <h5> To provide you the best match,we will need you to add all needs you have</h5>
-
-              <ul>
-                {needs.map((need, index) => (
-                  <li key={index}>{need}</li>
-                ))}
-              </ul>
-            </div>
+          <div className={styles.activityformsection}>
+          <ActivityForm />
+          </div>
+          </div>
+          <br/>
+          <div className={styles.sectorandapplicationsection}>
+          <SectorAndApplication />
           </div>
 
-          
+           
+          <div className={styles.offersNeeds}>
+          <div className={styles.column}>
+            <h3>Add your Offers</h3>
+            <h5> To provide you the best match, we will need you to add all offers you have</h5>
+            <br/>
+            {offers.length > 0 && (
+              <h4>{offers[0].sector.toUpperCase()}</h4>
+            )}
+            <div className={styles.offersDisplay}>
+              {offers.map((offer, index) => (
+                <div key={index} className={styles.offerItem}>
+                  <h5>{offer.category.toUpperCase()}</h5>
+                  <ul className={styles.subcategoryList}>
+                    {offer.subcategories.map((subcategory, subIndex) => (
+                      <li key={subIndex} className={styles.subcategoryItem}>
+                        {subcategory}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ))}
+  </div>
+</div>
+
+
+
+          <div className={styles.column2}>
+                  <h3>Additional questions to improve future matchmaking</h3>
+                  <br/>
+                  <div>
+                    <h5 onClick={() => setShowMaterials(!showMaterials)} style={{ cursor: 'pointer' }} className={styles.collapsibleHeader} >
+                      Materials Processed {showMaterials ? '▲' : '▼'}
+                    </h5>
+                    {showMaterials && (
+                      <div className={styles.checkboxGroup1}>
+                        <label><input type="checkbox" /> Steels</label><br />
+                        <label><input type="checkbox" /> Inconel</label><br />
+                        <label><input type="checkbox" /> Stainless steels</label><br />
+                        <label><input type="checkbox" /> Superalloys</label><br />
+                        <label><input type="checkbox" /> Titanium</label><br />
+                        <label><input type="checkbox" /> Aluminium & Alloys</label><br />
+                        <label><input type="checkbox" /> Non-ferrous metals</label><br />
+                        <label><input type="checkbox" /> Composites</label><br />
+                        <label><input type="checkbox" /> Plastics</label><br />
+                        <label><input type="checkbox" /> Thermoplastics</label><br />
+                        <label><input type="checkbox" /> Ceramics</label><br />
+                        <div  className={styles.othersContainer}>
+                        <label>
+                            <input 
+                              type="checkbox" 
+                              checked={othersChecked} 
+                              onChange={(e) => setOthersChecked(e.target.checked)} 
+                            /> 
+                            Others:
+                        </label>
+                        {othersChecked && (
+                        <input 
+                          type="text" 
+                          placeholder="Please specify" 
+                          value={othersText} 
+                          onChange={(e) => setOthersText(e.target.value)} 
+                          className={styles.othersInput} 
+                        />
+                      )}
+                      </div>
+                      </div>
+                    )}
+                  </div><br/>
+ 
+                  <div>
+                    <h5 onClick={() => setShowQuantity(!showQuantity)} style={{ cursor: 'pointer' }}  className={styles.collapsibleHeader} >
+                      Quantity {showQuantity ? '▲' : '▼'}
+                    </h5>
+                    {showQuantity && (
+                      <div className={styles.checkboxGroup}>
+                        <label><input type="checkbox" /> Prototype, less than 10 parts</label><br />
+                        <label><input type="checkbox" /> Small series (11 to 51 parts)</label><br />
+                        <label><input type="checkbox" /> Medium series (51 to 500 parts)</label><br />
+                        <label><input type="checkbox" /> Large series (501 to 5000 parts)</label>
+                      </div>
+                    )}
+                  </div><br/>
+
+                  <div>
+                  <h5 onClick={() => setShowTiming(!showTiming)} style={{ cursor: 'pointer' }}  className={styles.collapsibleHeader} >
+                    Timing {showTiming ? '▲' : '▼'}
+                  </h5>
+                  {showTiming && (
+                    <div className={styles.timingInput}>
+                      <input type="text" placeholder="Specify timing requirements" className={styles.inputField} />
+                    </div>
+                  )}
+                </div>
+        </div>  
+          </div>
+           
+         <div className={styles.productsandassets}>
+           <ProductsAndAssets/>
+         </div>
+
+
           <div className={styles.otherSettings}>
             <Link to='/offers'>
-              <button>Other Settings</button>
+              <button>Modify Offers</button>
             </Link>
           </div>
         </div>
@@ -251,4 +356,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default SupplierDashboard;

@@ -8,12 +8,12 @@ const Build = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <img src="/images/image2.jpg" alt="Image" className="build-image" />
+            <img src="/images/pictures/picture.jpg" alt="Image" className="build-image" />
           </div>
 
           <div className="col-md-6">
             <h2 className="build-title">
-              Build new business partnerships with a 100% online platform available 24/7!
+              Build new business partnerships with a platform available 24/7!
             </h2>
             <p className="build-description">
               SEEK Innovation is a B2B matchmaking platform that allows you to access the latest innovations and technological developments in your ecosystem, in just a few clicks! Identify your future partners and control your ROI thanks to an optimized meeting path:

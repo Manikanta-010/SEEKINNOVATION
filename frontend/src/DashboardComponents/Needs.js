@@ -7,7 +7,19 @@ const Needs = () => {
   const navigate = useNavigate();
 
   const handleSave = () => {
-    navigate('/dashboard', { state: { needs: needsSelections } });
+    const groupedNeeds = needsOptions.reduce((acc, need) => {
+      const selectedSubcategories = need.subcategories.filter(sub => needsSelections.includes(sub));
+      if (selectedSubcategories.length > 0) {
+        acc.push({
+          sector: "ENERGY",  
+          category: need.name,
+          subcategories: selectedSubcategories
+        });
+      }
+      return acc;
+    }, []);
+  
+    navigate('/buyer-dashboard', { state: { needs: groupedNeeds } });
   };
 
   const needsOptions = [
@@ -198,9 +210,9 @@ const Needs = () => {
 
   return (
     <div className={styles.needsNeeds}>
-      <h3>Energy Sector</h3>
+      <h3>ENERGY SECTOR</h3>
       <div className={styles.buttonsTop}>
-        <button onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
+        <button onClick={() => navigate('/buyer-dashboard')}>Back to Dashboard</button>
         <button onClick={handleSave}>Save</button>
       </div>
 
@@ -244,4 +256,4 @@ const Needs = () => {
   );
 };
 
-export default Needs;
+export default Needs; 

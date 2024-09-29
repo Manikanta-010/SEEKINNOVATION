@@ -9,18 +9,18 @@ const Follow = () => {
       <br/><br/>
       <div className="social-media">
         <p>Follow Us</p>
-        <a href="https://facebook.com" target="_blank" rel="noreferrer">
+        {/*<a href="https://facebook.com" target="_blank" rel="noreferrer">
           <FaFacebookF />
-        </a>
+        </a>*/}
         <a href="https://twitter.com" target="_blank" rel="noreferrer">
           <FaTwitter />
         </a>
         <a href="https://linkedin.com" target="_blank" rel="noreferrer">
           <FaLinkedinIn />
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noreferrer">
-          <FaInstagram />  {/* Added Instagram icon */}
-        </a>
+        {/*<a href="https://instagram.com" target="_blank" rel="noreferrer">
+          <FaInstagram />  
+        </a> */}
       </div>
       <div className="contact-details">
         <p>&copy; 2024 SEEK Innovation. All rights reserved.</p>

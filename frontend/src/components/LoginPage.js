@@ -4,10 +4,14 @@ import './styles/LoginPage.css';
 import LeftSection from './LeftSection';
 import { Link } from 'react-router-dom';
 
+import SignInPopup from './SignInPopup';
+
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleEmailChange = (event) => setEmail(event.target.value);
   const handlePasswordChange = (event) => setPassword(event.target.value);
@@ -15,12 +19,17 @@ const LoginPage = () => {
   const handleLogin = (event) => {
     event.preventDefault(); 
     console.log('Logged in with:', { email, password });
-    navigate('/dashboard');  
+    setShowPopup(true); 
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    navigate('/buyer-dashboard');   
   };
 
   return (
     <div className='loginpage-login-container'>
-      <LeftSection imageSrc="images/bg3.jpeg" />
+      <LeftSection imageSrc="images/pictures/picture1.jpg" />
       <div className="loginpage-right-section">
         <div className="loginpage-logo-section">
           <img src="images/logo.jpg" alt="Logo" className="loginpage-logo" />
@@ -36,6 +45,7 @@ const LoginPage = () => {
                 id="email"
                 className="form-control"
                 placeholder="Enter your Email Id"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                 value={email}
                 onChange={handleEmailChange}
                 required
@@ -54,15 +64,16 @@ const LoginPage = () => {
               />
               <br /><br /><br />
             </div>
-            <Link to='/dashboard'>
+       
               <button type="submit" className="btn loginpage-login-btn">Login</button>
-            </Link>
+         
           </form><br/>
           <p className="loginpage-register-link">
             Don't have an account? <a href="/register">Register here</a>
           </p>
         </div>
       </div>
+      {showPopup && <SignInPopup onClose={handlePopupClose} />}
     </div>
   );
 };

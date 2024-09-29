@@ -12,7 +12,7 @@ const Ideas = () => {
               <div className="card mb-4 idea-card">
                 <div className="card-body">
                   <h3 className="card-title">Would you like to present your solutions?</h3>
-                  <br/>
+                  <br/><br/>
                   <p className="card-text">Present your solutions/technologies to all participants.</p>
                   <p className="card-text">Meet decision makers looking for innovative solutions and support.</p>
                   <p className="card-text">Make yourself known to the SEEK Innovation Community.</p>

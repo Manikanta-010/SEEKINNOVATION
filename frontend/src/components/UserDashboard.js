@@ -10,6 +10,7 @@ const UserDashboard = () => {
 
   const location = useLocation(); 
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   const [fullName, setFullName] = useState('');
   const [position, setPosition] = useState(''); 
@@ -33,7 +34,15 @@ const UserDashboard = () => {
   }, [location.state]);
 
   const handleMyProfile = () => {
-    navigate('/dashboard', { state: { fullName, company, position, country, profilePic} });
+    if (state.role === 'Contractor/Buyer') {
+      navigate('/buyer-dashboard', { state: { fullName, company, position, country,role: state.role } });
+    } else if(state.role === 'Supplier/OEM') 
+    {
+      navigate('/supplier-dashboard', { state: { fullName, company, position, country,role: state.role  } });
+    }
+    else{
+      navigate('/cluster-dashboard', { state: { fullName, company, position, country,role: state.role  } });
+    }
   };
 
   return (
@@ -108,9 +117,9 @@ const UserDashboard = () => {
         <div className="dashboard-card profile-completion-card">
          
           <h4>I completed my profile</h4>
-          <a href='/dashboard'>
-          <button className="btn-look">Look</button>
-          </a>
+          
+          <button className="btn-look" onClick={handleMyProfile}>Look</button>
+        
           <div className="card-background-img1"></div>
         </div>
 

@@ -4,18 +4,20 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './components/Home';
-import RegisterPage from './components/RegisterPage';
-import RegistrationStep2 from './components/RegistrationStep2';
-import RegistrationStep3 from './components/RegistrationStep3';
+import RegistrationPage from './components/RegistrationPage'; 
 import LoginPage from './components/LoginPage';
+
 import UserDashboard from './components/UserDashboard';
 import Contact from './components/Contact';
 
 
-import Dashboard from './DashboardComponents/Dashboard';
+import BuyerDashboard from './DashboardComponents/BuyerDashboard';
+import SupplierDashboard from './DashboardComponents/SupplierDashboard';
 import GeneralSelection from './DashboardComponents/GeneralSelection';
 import Offers from './DashboardComponents/Offers';
 import Needs from './DashboardComponents/Needs';
+
+import ProPopup from './DashboardComponents/ProPopup';
 
  
 
@@ -27,17 +29,23 @@ const App = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/registration-step2" element={<RegistrationStep2 />} />
-          <Route path="/registration-step3" element={<RegistrationStep3 />} />
+          <Route path="/register" element={<RegistrationPage />} />      
           <Route path="/login" element={<LoginPage />} />
+ 
+        
+
           <Route path="/userdashboard" element={<UserDashboard />} />
           <Route path="/contact" element={<Contact />} />
 
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/buyer-dashboard" element={<BuyerDashboard />} />
+          <Route path="/supplier-dashboard" element={<SupplierDashboard />} />
           <Route path='/general-selection' element={<GeneralSelection />} />
           <Route path="/offers" element={<Offers />}/>
           <Route path="/needs" element={<Needs />}/>
+
+          <Route path="/pro" element={<ProPopup />}/>
+           
+         
  
 
         

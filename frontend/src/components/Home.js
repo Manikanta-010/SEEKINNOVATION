@@ -11,19 +11,16 @@ import Impact from './Impact';
 
 import './styles/Home.css'; 
 
- 
 const Home = () => {
   const images = [
     'images/bg1.jpeg',
     'images/bg2.jpeg',
     'images/bg3.jpeg',
-  
    
   ];
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [prevImageIndex, setPrevImageIndex] = useState(images.length - 1);
-  const constantImage = 'images/bg2.jpeg';
+  const constantImage = 'images/pictures/bg2.jpg';
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -75,7 +72,7 @@ const Home = () => {
           </Link>
         </div>
       </div>
-     
+      <br/><br/><br/><br/>
       <FocusArea />
       <br/>
       <LogoContainer />
