@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,7 +17,11 @@ import GeneralSelection from './DashboardComponents/GeneralSelection';
 import Offers from './DashboardComponents/Offers';
 import Needs from './DashboardComponents/Needs';
 
+
+import Chart from './MatchMaking/Chart';
 import ProPopup from './DashboardComponents/ProPopup';
+import Admin from './AdminView/Admin';
+import FollowUpPopup from './MatchMaking/FollowUpPopup';
 
  
 
@@ -42,7 +46,10 @@ const App = () => {
           <Route path='/general-selection' element={<GeneralSelection />} />
           <Route path="/offers" element={<Offers />}/>
           <Route path="/needs" element={<Needs />}/>
-
+      
+          <Route path="/chart" element={<Chart />}/>
+          <Route path="/le" element={<Admin />}/>
+          <Route path="/up" element={<FollowUpPopup />}/>
           <Route path="/pro" element={<ProPopup />}/>
            
          

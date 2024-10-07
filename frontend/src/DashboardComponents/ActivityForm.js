@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './ActivityForm.module.css';  
+import styles from './ActivityForm.module.css'; // Create this CSS module for styles
 
 const ActivityForm = () => {
   const [activityInfo, setActivityInfo] = useState({

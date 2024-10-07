@@ -20,7 +20,7 @@
   align-items: center;
   padding: 20px;
   border-radius: 10px;
-  position: relative;  
+  position: relative; /* For positioning the close button */
 }
 
 h2 {

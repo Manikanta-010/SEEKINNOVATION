@@ -1,35 +1,45 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './OffersNeeds.module.css';
 
 const Needs = () => {
+  const currentLocation = useLocation();  
+  const { state } = currentLocation; 
+  const { sectors } = state || {};   
+  
   const [needsSelections, setNeedsSelections] = useState([]);
   const navigate = useNavigate();
 
   const handleSave = () => {
-    const groupedNeeds = needsOptions.reduce((acc, need) => {
-      const selectedSubcategories = need.subcategories.filter(sub => needsSelections.includes(sub));
-      if (selectedSubcategories.length > 0) {
-        acc.push({
-          sector: "ENERGY",  
-          category: need.name,
-          subcategories: selectedSubcategories
-        });
-      }
-      return acc;
-    }, []);
-  
-    navigate('/buyer-dashboard', { state: { needs: groupedNeeds } });
+    const groupedNeeds = sectors.map((sector) => {
+      const sectorNeeds = needsOptions[sector] || [];
+      return sectorNeeds.reduce((acc, need) => {
+        const selectedSubcategories = need.subcategories.filter((sub) =>
+          needsSelections.includes(sub)
+        );
+        if (selectedSubcategories.length > 0) {
+          acc.push({
+            sector,
+            category: need.name,
+            subcategories: selectedSubcategories,
+          });
+        }
+        return acc;
+      }, []);
+    });
+
+    navigate('/buyer-dashboard', { state: { needs: groupedNeeds.flat() } });
   };
 
-  const needsOptions = [
-
+  const needsOptions = {
+  'Energy': 
+  [ 
     {
       name: "Renewable hydrogen",
       subcategories: [
         "Green (Renewable energy)",
         "Low-carbon hydrogen",
-        "Blue (Low-cabon fossil)",
+        "Blue (Low-carbon fossil)",
         "Yellow (Nuclear energy)",
         "Carbon Hydrogen",
         "Grey (Fossil)",
@@ -148,7 +158,7 @@ const Needs = () => {
         "3rd party power supply",
         "Equity power supply",
         "Hydrogen direct",
-        "Pipline",
+        "Pipeline",
         "Gas technologies",
         "power transmission"
       ]
@@ -179,8 +189,120 @@ const Needs = () => {
         "Others"
       ]
     }
-    
-  ];
+      
+  ],
+  'Aerospace': 
+  [ 
+    {
+      name: "Renewable hydrogen",
+      subcategories: [
+        "Green (Renewable energy)",
+        "Low-carbon hydrogen",
+        "Blue (Low-carbon fossil)",
+        "Yellow (Nuclear energy)",
+        "Carbon Hydrogen",
+        "Grey (Fossil)",
+      ]
+    },
+    {
+      name: "PACKAGING",
+      subcategories: [
+        "Compressors",
+        "Compression",
+        "Manufacturing compression equipment",
+        "Tanks, trucks",
+        "Tube trailers",
+        "Pipeline tubes",
+        "Liquefaction units: heat exchangers, compressors, pumps, turbo-owners"
+      ]
+    },
+    {
+      name: "DISTRIBUTION",
+      subcategories: [
+        "Means of distribution",
+        "Provisioning by boat",
+        "Provisioning by truck",
+        "Provisioning by gas pipeline",
+        "Filling by swapping the stacking module",
+        "Filling on station"
+      ]
+    }, 
+  ],
+  'Industry': 
+  [ 
+    {
+      name: "Renewable hydrogen",
+      subcategories: [
+        "Green (Renewable energy)",
+        "Low-carbon hydrogen",
+        "Blue (Low-carbon fossil)",
+        "Yellow (Nuclear energy)",
+        "Carbon Hydrogen",
+        "Grey (Fossil)",
+      ]
+    },
+    {
+      name: "PACKAGING",
+      subcategories: [
+        "Compressors",
+        "Compression",
+        "Manufacturing compression equipment",
+        "Tanks, trucks",
+        "Tube trailers",
+        "Pipeline tubes",
+        "Liquefaction units: heat exchangers, compressors, pumps, turbo-owners"
+      ]
+    },
+    {
+      name: "DISTRIBUTION",
+      subcategories: [
+        "Means of distribution",
+        "Provisioning by boat",
+        "Provisioning by truck",
+        "Provisioning by gas pipeline",
+        "Filling by swapping the stacking module",
+        "Filling on station"
+      ]
+    }, 
+  ],
+  'Defense & Security': 
+  [ 
+    {
+      name: "Renewable hydrogen",
+      subcategories: [
+        "Green (Renewable energy)",
+        "Low-carbon hydrogen",
+        "Blue (Low-carbon fossil)",
+        "Yellow (Nuclear energy)",
+        "Carbon Hydrogen",
+        "Grey (Fossil)",
+      ]
+    },
+    {
+      name: "PACKAGING",
+      subcategories: [
+        "Compressors",
+        "Compression",
+        "Manufacturing compression equipment",
+        "Tanks, trucks",
+        "Tube trailers",
+        "Pipeline tubes",
+        "Liquefaction units: heat exchangers, compressors, pumps, turbo-owners"
+      ]
+    },
+    {
+      name: "DISTRIBUTION",
+      subcategories: [
+        "Means of distribution",
+        "Provisioning by boat",
+        "Provisioning by truck",
+        "Provisioning by gas pipeline",
+        "Filling by swapping the stacking module",
+        "Filling on station"
+      ]
+    }, 
+  ],
+  };
 
   const handleSubcategorySelect = (subcategory) => {
     setNeedsSelections((prev) =>
@@ -197,63 +319,67 @@ const Needs = () => {
     }
   };
 
-  const handleClearAll = (needName) => {
-    setNeedsSelections((prev) =>
-      prev.filter((item) => !needsOptions.find((need) => need.name === needName)?.subcategories.includes(item))
-    );
+  const handleClearAll = (needName, sector) => {
+    const sectorNeeds = needsOptions[sector];
+    const subcategories = sectorNeeds.find((need) => need.name === needName)?.subcategories || [];
+    setNeedsSelections((prev) => prev.filter((item) => !subcategories.includes(item)));
   };
 
-  const handleSelectAll = (needName) => {
-    const allSelections = needsOptions.find((need) => need.name === needName)?.subcategories || [];
-    setNeedsSelections((prev) => [...new Set([...prev, ...allSelections])]);  
+  const handleSelectAll = (needName, sector) => {
+    const sectorNeeds = needsOptions[sector];
+    const subcategories = sectorNeeds.find((need) => need.name === needName)?.subcategories || [];
+    setNeedsSelections((prev) => [...new Set([...prev, ...subcategories])]);
   };
 
   return (
     <div className={styles.needsNeeds}>
-      <h3>ENERGY SECTOR</h3>
       <div className={styles.buttonsTop}>
         <button onClick={() => navigate('/buyer-dashboard')}>Back to Dashboard</button>
         <button onClick={handleSave}>Save</button>
       </div>
 
-      <div className={styles.needsLinks}>
-        {needsOptions.map((need) => (
-          <a
-            key={need.name}
-            onClick={() => scrollToSection(need.name)}
-            className={styles.link}
-          >
-            {need.name}
-          </a>
-        ))}
-      </div>
-
-      <div className={styles.sections}>
-        {needsOptions.map((need) => (
-          <div key={need.name} id={need.name} className={styles.section}>
-            <h4>{need.name}</h4>
-            {need.subcategories && need.subcategories.map((sub) => (
-              <div key={sub} className={styles.subcategory}>
-                <input
-                  type="checkbox"
-                  checked={needsSelections.includes(sub)}
-                  onChange={() => handleSubcategorySelect(sub)}
-                />
-                <label>{sub}</label>
-              </div>
-            ))}
-             <br/>
-             <div className={styles.buttonsSection}>
-              <button onClick={() => handleSelectAll(need.name)}>Select All</button>
-              <button onClick={() => handleClearAll(need.name)}>Clear All</button>
+      {sectors && sectors.length > 0 ? (
+        sectors.map((sector) => (
+          <div key={sector}>
+            <h3>{sector.toUpperCase()} SECTOR</h3>
+            <div className={styles.needsLinks}>
+              {(needsOptions[sector] || []).map((need) => (
+                <a key={need.name} onClick={() => scrollToSection(`${sector}-${need.name}`)} className={styles.link}>
+                  {need.name}
+                </a>
+              ))}
             </div>
-        
+
+            <div className={styles.sections}>
+              {(needsOptions[sector] || []).map((need) => (
+                <div key={need.name} id={`${sector}-${need.name}`} className={styles.section}>
+                  <h4>{need.name}</h4>
+                  {need.subcategories.map((sub) => (
+                    <div key={sub} className={styles.subcategory}>
+                      <input
+                        type="checkbox"
+                        checked={needsSelections.includes(sub)}
+                        onChange={() => handleSubcategorySelect(sub)}
+                      />
+                      <label>{sub}</label>
+                    </div>
+                  ))}
+                  <br />
+                  <div className={styles.buttonsSection}>
+                    <button onClick={() => handleSelectAll(need.name, sector)}>Select All</button>
+                    <button onClick={() => handleClearAll(need.name, sector)}>Clear All</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <br/>
           </div>
-        ))}
-      </div>
-    
+        ))
+      ) : (
+        <p>Please make sure you have selected sector(s) before navigating here.</p>
+      )}
     </div>
   );
 };
 
-export default Needs; 
+export default Needs;

@@ -12,11 +12,11 @@ const Ideas = () => {
               <div className="card mb-4 idea-card">
                 <div className="card-body">
                   <h3 className="card-title">Would you like to present your solutions?</h3>
-                  <br/><br/>
+                  <br/>
                   <p className="card-text">Present your solutions/technologies to all participants.</p>
                   <p className="card-text">Meet decision makers looking for innovative solutions and support.</p>
                   <p className="card-text">Make yourself known to the SEEK Innovation Community.</p>
-                  <br/><br/>
+                  <br/><br/><br/>
                   <a href="#explore" className="btn">I PROPOSE MY SOLUTIONS</a>
                 </div>
               </div>
@@ -28,7 +28,7 @@ const Ideas = () => {
                   <p className="card-text"> Identify innovative solutions to carry out your projects.</p>
                   <p className="card-text">Meet new suppliers or vendors.</p>
                   <p className="card-text">Benefit from market, sector, and technological insights.</p>
-                  <br/>
+                  <br/><br/><br/>
                   <a href="#learn-more" className="btn">I AM LOOKING FOR SOLUTIONS</a>
                 </div>
               </div>

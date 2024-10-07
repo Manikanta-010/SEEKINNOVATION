@@ -2,7 +2,7 @@ import React from 'react';
 import './styles/Impact.css';  
 import { Link } from 'react-router-dom';
 
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Row, Col, Card, Button } from 'react-bootstrap';
 
 const Impact = () => {
   return (

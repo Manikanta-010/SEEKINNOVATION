@@ -20,7 +20,7 @@ const SectorPopup = ({ closePopup }) => {
   const navigate = useNavigate();
   const handleSave = () => {
    
-    navigate('/general-selection', { state: { sectors: selectedSectors,role: state.role} });
+    navigate('/general-selection', { state: { sectors: selectedSectors,role: state?.role} });
     closePopup();
   };
 

@@ -1,0 +1,112 @@
+/* General Container */
+.dashboard-container {
+    background: linear-gradient(135deg, #f0f8ff, #eef7ff); /* Light blue gradient background */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+.dashboard-card, .alert-card {
+    border-radius: 20px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    transition: transform 0.2s ease;
+}
+
+.dashboard-card:hover, .alert-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Text and Titles */
+h2, h4, .card-title, .alert-header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #003366; /* Dark blue */
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Chart Containers */
+.doughnut-chart {
+    max-width: 180px; /* Increased size */
+    margin: 0 auto;
+}
+
+.line-graph {
+    max-height: 300px;
+}
+
+/* Alert Center */
+.alert-card {
+    padding: 15px;
+    background: #ffffff;
+}
+
+.alert-header {
+    background-color: #003366; /* Dark blue */
+    color: white;
+    font-size: 1.5rem;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.alert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.alert-item.info {
+    background-color: #e7f3fe; /* Light blue for info */
+    color: #31708f; /* Dark blue text */
+}
+
+.alert-item.warning {
+    background-color: #fff3cd; /* Light yellow for warnings */
+    color: #856404; /* Dark yellow text */
+}
+
+.alert-item.urgent {
+    background-color: #f8d7da; /* Light red for urgent */
+    color: #721c24; /* Dark red text */
+}
+
+/* Alert Timestamp */
+.alert-timestamp {
+    font-size: 0.9rem;
+    color: #555; /* Grey for timestamp */
+}
+
+/* Alert Icons */
+.alert-item .fa-info-circle {
+    color: #31708f; /* Match the info alert text color */
+}
+
+.alert-item .fa-exclamation-circle {
+    color: #856404; /* Match the warning alert text color */
+}
+
+.alert-item .fa-bell {
+    color: #721c24; /* Match the urgent alert text color */
+}
+
+/* Hover Effects */
+.alert-item:hover {
+    background-color: #f0f8ff; /* Soft background highlight */
+}
+

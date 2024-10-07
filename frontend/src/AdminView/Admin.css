@@ -1,0 +1,84 @@
+/* General Container */
+.leaderboard-container {
+    background-color: #181a1b;
+    padding: 30px;
+    color: white;
+    height: 100vh;
+}
+
+/* Card Styles */
+.leaderboard-card, .stats-card, .pnl-card {
+    background-color: #222529;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.leaderboard-card .card-body,
+.stats-card .card-body,
+.pnl-card .card-body {
+    padding: 20px;
+}
+
+.leaderboard-title, .pnl-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.leaderboard-subtitle {
+    color: #bbbbbb;
+    font-size: 1rem;
+}
+
+/* Table Styles */
+.leaderboard-table thead th, .pnl-table thead th {
+    color: #888888;
+    border-bottom: none;
+}
+
+.leaderboard-table tbody td, .pnl-table tbody td {
+    color: white;
+    border-bottom: none;
+}
+
+.leaderboard-table tbody tr:hover, .pnl-table tbody tr:hover {
+    background-color: #33363a;
+}
+
+/* Stats Header */
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.stats-icon {
+    font-size: 2rem;
+    color: #44D7B6;
+}
+
+.stats-info h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.stats-info p {
+    margin: 0;
+    color: #888888;
+}
+
+/* PNL Graph Placeholder */
+.pnl-graph-placeholder {
+    height: 150px;
+    background-color: #2b2f33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: #888888;
+}

@@ -122,7 +122,7 @@ const SupplierDashboard = () => {
           <Link to="/contact">
             <button>Contact for Help</button>
           </Link>
-          <Link to="/logout">
+          <Link to="/">
             <button>Logout</button>
           </Link>
         </div>

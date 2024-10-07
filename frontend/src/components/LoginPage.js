@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/LoginPage.css';
 import LeftSection from './LeftSection';
-import { Link } from 'react-router-dom';
+ 
 
 import SignInPopup from './SignInPopup';
 

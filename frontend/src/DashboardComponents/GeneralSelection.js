@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './GeneralSelection.module.css';
 import { useLocation, useNavigate} from 'react-router-dom';
  
@@ -9,21 +9,25 @@ const GeneralSelection = ({ onSave }) => {
   const [isOpen, setIsOpen] = useState(true);  
 
   const location = useLocation();
-  const { sectors } = location.state || {};
-
+  const navigate = useNavigate();
+  const { state} = useLocation();
+  const { sectors, role } = location.state || {};
 
   const generalOptions = [
     "Patents / Technologies", "Consulting", "Design", "Engineering", "Partnership", "Prototyping"
   ];
+  
+  useEffect(() => {
+    if (sectors) {
+      setSelectedSectors(sectors);  
+    }
+  }, [sectors]);
 
   const handleGeneralSelect = (option) => {
     setSelectedGeneral((prev) =>
       prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]
     );
   };
-
-  const navigate = useNavigate();
-  const { state} = useLocation();
 
   const handleSave = () => {
     if (state.role === 'Contractor/Buyer') {
