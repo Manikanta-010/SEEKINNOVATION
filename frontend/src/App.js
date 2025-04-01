@@ -22,6 +22,8 @@ import Chart from './MatchMaking/Chart';
 import ProPopup from './DashboardComponents/ProPopup';
 import Admin from './AdminView/Admin';
 import FollowUpPopup from './MatchMaking/FollowUpPopup';
+import NewBuyerDashboard from './DashboardComponents/NewBuyerDashboard';
+import Agenda from './DashboardComponents/Agenda';
 
  
 
@@ -52,8 +54,9 @@ const App = () => {
           <Route path="/up" element={<FollowUpPopup />}/>
           <Route path="/pro" element={<ProPopup />}/>
            
-         
- 
+          <Route path="/new-buyer-dashboard" element={<NewBuyerDashboard />} />
+          <Route path='/agenda' element={<Agenda />} />
+
 
         
         </Routes>

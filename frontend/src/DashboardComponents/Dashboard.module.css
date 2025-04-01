@@ -1,4 +1,238 @@
+/* Dashboard Layout */
 .dashboard {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: auto;
+}
+
+/* Navbar */
+.dashboardnavbar {
+  background-color: #00274d;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  height: 65px;
+}
+
+/* Logo */
+.dashbarlogo {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 90px;
+  max-height: 120px;
+}
+
+.dashbarlogo img {
+  font-size: 1.5rem;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  object-fit: contain;
+}
+
+/* Navigation Buttons */
+.navButtons {
+  display: flex;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.navButtons button {
+  margin-left: 15px;
+  padding: 8px 12px;
+  background-color: gold;
+  color: #00274d;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Main Layout */
+.container {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #001f3f;
+  width: 220px;
+  transition: width 0.3s;
+}
+
+.sidebar.closed {
+  width: 50px;
+}
+
+/* Sidebar Toggle Button */
+.menuToggle {
+  background: none;
+  color: white;
+  border: none;
+  padding: 25px;
+  font-size: x-large;
+  cursor: pointer;
+}
+
+/* Sidebar Menu Items */
+.menuItems button {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: none;
+  color: white;
+  font-size: large;
+  border: none;
+  text-align: left;
+  width: 100%;
+  font-weight: 400;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #001f3f;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.menuItems button:hover {
+  font-size: 17px;
+  color: #f0c040;
+  text-decoration-thickness: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Camera Icon */
+.cameraIcon {
+  font-size: 24px;
+  color: gold;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.cameraIcon:hover {
+  color: #ffd700;
+}
+
+/* Column Layout */
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content */
+.content {
+  flex-grow: 1;
+  padding: 40px 60px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 180px;
+  }
+  .content {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardnavbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+  .dashbarlogo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .navButtons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .navButtons button {
+    flex: 1;
+    padding: 12px 18px;
+    font-size: 18px;
+    text-align: center;
+  }
+  .sidebar {
+    width: 150px;
+  }
+  .menuItems button {
+    font-size: medium;
+    padding: 14px 22px;
+    width: 100%;
+  }
+  .content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboardnavbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+  }
+  .navButtons {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .sidebar {
+    width: 100px;
+  }
+  .menuToggle {
+    font-size: large;
+    padding: 15px;
+  }
+  .menuItems button {
+    font-size: small;
+    padding: 8px 10px;
+  }
+  .dashbarlogo {
+    max-width: 70px;
+    max-height: 100px;
+  }
+  .cameraIcon {
+    font-size: 18px;
+  }
+  .content {
+    padding: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* old css */
+/*
+ .dashboard {
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -12,7 +246,6 @@
   align-items: center;
   padding: 10px 20px;
   height: 65px;
-
 }
 
 .dashbarlogo img{
@@ -93,6 +326,11 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+*/
+
+
+
+
 .profileSection {
   display: flex;
   flex-direction: column;  
@@ -101,9 +339,9 @@
 }
  
 .profileAndLogo {
-display: flex;
-align-items: center;
-width: 100%;   
+ display: flex;
+ align-items: center;
+ width: 100%;
 }
  
 .profilePic {
@@ -135,6 +373,9 @@ width: 100%;
   border-radius: 50%;  
   padding: 5px; 
 }
+
+
+
 .profilePic input {
   display: none;  
 }
